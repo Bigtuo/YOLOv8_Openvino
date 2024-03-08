@@ -27,7 +27,7 @@ class OpenvinoInference(object):
         self.compiled_model_onnx = ie.compile_model(model=self.model_onnx, device_name="CPU")
         self.output_layer_onnx = self.compiled_model_onnx.output(0)
 
-    def predirts(self, datas):
+    def predict(self, datas):
         predict_data = self.compiled_model_onnx([datas])[self.output_layer_onnx]
         return predict_data
     
@@ -80,7 +80,7 @@ class YOLOv8:
         # 推理 inference
         t2 = time.time()
         if self.infer_tool == 'openvino':
-            preds = self.openvino.predirts(im)
+            preds = self.openvino.predict(im)
         else:
             preds = self.ort_session.run(None, {self.ort_session.get_inputs()[0].name: im})[0]
         print('推理时间：{:.2f}s'.format(time.time() - t2))
