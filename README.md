@@ -4,8 +4,11 @@
 
 ## 1 环境：
 CPU：i5-12500
+
 Python：3.8.18
+
 VS2019
+
 注：Bytetrack中的lap和cython_bbox库需要编译安装，直接安装报错，故下载VS2019。
 ## 2 安装Openvino和ONNXRuntime
 ### 2.1 Openvino简介
@@ -24,6 +27,7 @@ ONNXRuntime是微软推出的一款推理框架，用户可以非常便利的用
 
 ### 2.3 安装
 pip install openvino -i  https://pypi.tuna.tsinghua.edu.cn/simple
+
 pip install onnxruntime -i  https://pypi.tuna.tsinghua.edu.cn/simple
 
 
