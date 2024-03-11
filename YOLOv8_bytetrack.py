@@ -231,7 +231,7 @@ class ByteTrackerONNX(object):
         online_targets = []
         if dets is not None:
             online_targets = self.tracker.update(
-                dets[:, :-1],
+                dets[:, :5],
                 [image.shape[0], image.shape[1]],
                 [image.shape[0], image.shape[1]],
             )
@@ -253,7 +253,7 @@ class ByteTrackerONNX(object):
     
     def inference(self, image, dets):
         """
-        Args: dets: 检测结果, [x1, y1, x2, y2, score]
+        Args: dets: 检测结果, [x1, y1, x2, y2, conf, cls]
         Returns: np.array([[x1, y1, x2, y2, conf, ids], ...])
         """
         bboxes, ids, scores = self._tracker_update(dets, image)
